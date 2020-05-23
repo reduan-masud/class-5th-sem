@@ -11,7 +11,7 @@ int fibo(int n)
 
 int main()
 {
-    cout<<"Enter a number : ";
+    cout<<"Enter number : ";
     int n; cin>>n;
     cout<<n<<"th Fibonacci number is : ";
     cout<<fibo(n)<<endl;
