@@ -1,90 +1,18 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 
 typedef struct node Node;
-struct node
-{
+struct node{
     int data;
     Node *next;
 };
 
+
 void searchFromList(Node *h, int val)
 {
-    Node *s;
-    s = h;
-    int pos = 0;
-    bool found = 0;
-    int *address;
-    while(s)
-    {
-        pos++;
-        if(s->data == val)
-        {
-            found = 1;
-            address = &s->data;
-            break;
-        }
-        s = s->next;
 
-    }
 
-    if(found)
-    {
-        printf("Found...\n");
-        printf("Position : %d\n", pos);
-        cout<<"address :"<<address<<endl;
-    }
-    else
-    {
-        printf("Not Found..\n");
-    }
-
-}
-
-void insertNode(Node *head, int position, int value)
-{
-    Node *newNode = new node;
-    newNode->data = value;
-    Node *cNode = head;
-    Node *temp;
-    int pos = 1;
-    if(position == 1)
-    {
-        temp = cNode -> next;
-        cNode ->next = newNode;
-        newNode->next = temp;
-        swap(head->data, newNode->data);
-    }
-    else
-    {
-        while(cNode)
-        {
-
-            if(pos == position)
-            {
-                temp = cNode->next;
-                cNode->next = newNode;
-                newNode->next = temp;
-                break;
-
-            }
-            pos++;
-            cNode = cNode->next;
-
-        }
-    }
-
-}
-
-void showList(Node *head)
-{
-    cout<<"Printing list ... ... .. "<<endl;
-    Node *it = head;
-    while(it)
-    {
-        cout<<it->data<<endl;
-        it = it->next;
-    }
 }
 
 int main()
@@ -117,23 +45,44 @@ int main()
     }
 
     newNode->next = NULL;
-
-
-    showList(HEAD);
-    printf("Enter the position want to insert\n");
-    int in, val;
-    scanf("%d", &in);
-    printf("Enter the value want to insert\n");
-    scanf("%d", &val);
-    insertNode(HEAD, in, val);
-
-    showList(HEAD);
-
+    newNode = HEAD;
+    printf("The List contains....\n");
+    while(newNode)
+    {
+        //printf("\nLocation of node : %x and location of data : %x  and data is %d next node %x",newNode, &newNode->data, newNode->data, newNode->next);
+        printf("%d\n", newNode->data);
+        newNode = newNode->next;
+    }
 
     printf("Enter the value want to find\n");
     int f;
     scanf("%d", &f);
-    searchFromList(HEAD, f);
+     Node *s;
+    s = h;
+    int a = 0;
+    int fo = 0;
+    while(s)
+    {
+        pos++;
+        if(s->data == fo)
+        {
+            fo = 1;
+            address = &s->data;
+            break;
+        }
+        s = s->next;
+
+    }
+
+    if(fo)
+    {
+        printf("Found...\n");
+        printf("Position : %d\n", a);
+    }
+    else
+    {
+        printf("Not Found..\n");
+    }
 
     return 0;
 }
