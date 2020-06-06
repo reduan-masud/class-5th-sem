@@ -32,7 +32,9 @@ void searchFromList(Node *h, int val)
     {
         printf("Found...\n");
         printf("Position : %d\n", pos);
-        cout<<"address :"<<address<<endl;
+        printf("address : %x", address);
+	printf("\n");
+
     }
     else
     {
@@ -78,11 +80,12 @@ void insertNode(Node *head, int position, int value)
 
 void showList(Node *head)
 {
-    cout<<"Printing list ... ... .. "<<endl;
+    
+	printf("Printing List ... ... ..\n");
     Node *it = head;
     while(it)
     {
-        cout<<it->data<<endl;
+        printf("%d\n", it->data);
         it = it->next;
     }
 }
