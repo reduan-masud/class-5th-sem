@@ -2,6 +2,7 @@
 using namespace std;
 
 typedef struct node Node;
+
 struct node
 {
     int data;
@@ -106,16 +107,43 @@ void showList(Node *head)
     Node *it = head;
     while(it)
     {
-        printf("%d\n", it->data);
+        printf("%d ", it->data);
         it = it->next;
     }
+    printf("\n");
 }
 
-void pushBack(Node *head, Node *lastNode, int value)
+void insertInSortedList(Node *head, int value)
 {
     Node *newNode = new node;
-    lastNode->next = newNode;
-    newNode->next = NULL;
+    Node *cNode = head;
+    Node *temp;
+    newNode->data = value;
+    while(cNode)
+    {
+
+        if(cNode->data > value)
+        {
+            newNode->next = cNode->next;
+            cNode->next = newNode;
+            swap(cNode->data, newNode->data);
+            break;
+        }
+        else if(cNode->next == NULL)
+        {
+            newNode->next = cNode->next;
+            cNode->next = newNode;
+            break;
+        }
+        cNode = cNode->next;
+    }
+
+}
+
+void deleteNode(Node *head, int position)
+{
+    Node *newNode = new node;
+
 }
 
 int main()
@@ -123,45 +151,47 @@ int main()
 
     Node *HEAD, *newNode, *temp;
 
-
+    int n;
     HEAD = new node;
 
-
-
-    printf("Enter Head Node\n");
+    printf("Enter the umber of node you want to insert : ");
+    scanf("%d", &n);
     scanf("%d", &HEAD->data);
-
     int x;
-    printf("Enter Next Data\n");
-    scanf("%d", &x);
+
 
 
     newNode = HEAD;
-
-    while(x > 0)
+    int pos = 1;
+    while(pos < n)
     {
+        scanf("%d", &x);
         temp = new node;
         temp->data = x;
         newNode->next = temp;
         newNode = newNode->next;
 
-
-        printf("Enter Next Value : \n");
-        scanf("%d",&x);
+        //scanf("%d",&x);
+        pos++;
     }
 
     newNode->next = NULL;
 
-
     showList(HEAD);
-    printf("Enter the position want to insert\n");
-    int in, val;
-    scanf("%d", &in);
+
+    while(1){
     printf("Enter the value want to insert\n");
+    int in, val;
+    //scanf("%d", &in);
+    //if(n <= 0) break;
     scanf("%d", &val);
-    insertNode(HEAD, in, val);
-
+    if(val == -100) break;
+    //insertNode(HEAD, in, val);
+    insertInSortedList(HEAD, val);
     showList(HEAD);
+
+    }
+
 
 
    // printf("Enter the value want to find\n");
