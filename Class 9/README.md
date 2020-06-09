@@ -1,4 +1,4 @@
-# Linked List
+# --Linked List
 ## method lists-
  ```cpp
  void add_node(int value){...}
