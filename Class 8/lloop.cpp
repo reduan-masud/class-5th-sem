@@ -315,16 +315,14 @@ void LinkedList::show_top()
 int main()
 {
 	LinkedList l;
+	cout<<"Enter the number of element you want to insert."<<endl;
 	int n; cin>>n;
 	while(n--)
 	{
+	    cout<<"Enter the value: "<<endl;
 		int t; cin>>t;
 		l.add_node(t);
 	}
-    l.show_top();
-    l.pop_node();
-    l.show_top();
-    l.pop_node();
 
 
 	return 0;
