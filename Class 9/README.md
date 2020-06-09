@@ -1,6 +1,9 @@
 # Linked List
 ## method lists-
-- `add_node(int value)`: this will creat a node and insert a value at the end of the list;
+ ```cpp
+ add_node(int value){...}
+ ```
+ - this will creat a node and insert a value at the end of the list;
 - `add_node(int position ,int  value)`: will insert a node with `int  value` on the given `int position`
 - `search_value(int d)`: `d` means data the method will show that the value is found or not if found the position;
 - `update_node_by_value(int u, int v)`: here `u` which value or values you wanted to update with `v`
