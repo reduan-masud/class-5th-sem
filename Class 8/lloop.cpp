@@ -10,7 +10,7 @@ struct node{
 class LinkedList{
 
 private:
-	
+
 	Node *head;
 	Node *tail;
 	int count_node = 0;
@@ -22,15 +22,15 @@ public:
 		head = NULL;
 		tail = NULL;
 	}
-	
+
 	void search_value(int d)
 	{
 		if(head == NULL && tail == NULL)
 		{
 			cout<<"warrning: there is nothing to search.."<<endl;
 			return;
-		}	
-		
+		}
+
 		Node *c = head;
 		bool f = false;
 		int position = 0;
@@ -53,8 +53,8 @@ public:
 
 	void add_node(int d)
 	{
-		
-		if(this->head == NULL && this->tail == NULL)
+
+		if(count_node == 0)
 		{
 			Node *n = new node;
 			this->head = n;
@@ -66,17 +66,20 @@ public:
 		{
 			if(is_sorted && d < tail->data)
 				this->is_sorted = false;
+
 			Node *n = new node;
 			n->data = d;
 			this->tail->next = n;
 			this->tail = n;
+			n->next = NULL;
 
-		} 
+		}
 		this->count_node++;
 
 
 	}
-	void insert_node(int pos, int val)
+
+	void add_node(int pos, int val)
 	{
 		if(pos > count_node+1 || pos <= 0)
 		{
@@ -116,15 +119,16 @@ public:
 					n->next = c->next;
 					c->next = n;
 					swap(c->data, n->data);
-					break;	
+					break;
 				}
 				c = c->next;
-				
+
 			}
 		}
 		this->count_node++;
 		cout<<"Inserted.."<<endl;
 	}
+
 	void update_node_by_value(int u, int v)
 	{
 		Node *c = head;
@@ -137,7 +141,7 @@ public:
 		cout<<"Update complete.."<<endl;
 
 	}
-	
+
 	void update_node_by_position(int p, int v)
 	{
 
@@ -157,7 +161,7 @@ public:
 		cout<<"Update complete.."<<endl;
 
 	}
-	
+
 	void delete_node_by_position(int p)
 	{
 		Node *c = head;
@@ -186,40 +190,27 @@ public:
 				c = c->next;
 
 			}
-			
+
 		}
 		count_node--;
 	}
 
 	void add_node_sorted(int val)
 	{
-		if(this->head == NULL && this->tail == NULL)
-		{
-			Node *n = new node;
-			this->head = n;
-			this->head->data = val;
-			this->tail = head;
-			this->head->next = NULL;
-			this->count_node++;
-			return;
-		}
+    if(count_node == 0)
+    {
+      this->add_node(val);
+      return;
+    }
 
 		if(!is_sorted)
 		{
 			cout<<"warrnint: the list must be in sorted order"<<endl;
 			return;
 		}
-		
+
 		Node *m = new node;
 		m->data = val;
-		if(tail->data <= val)
-		{
-			m->next = NULL;
-			tail->next = m;
-			tail = m;
-			this->count_node++;
-			return;
-		}
 
 		Node *c = head;
 
@@ -233,6 +224,13 @@ public:
 				this->count_node++;
 				break;
 			}
+			else if(c->next == NULL)
+            {
+                c->next = m;
+                m->next = NULL;
+                tail = m;
+                break;
+            }
 			c = c->next;
 		}
 
@@ -257,7 +255,7 @@ public:
 
 	void show_list()
 	{
-	
+
 		if(head == NULL && tail == NULL)
 		{
 			cout<<"warrning: No Node Created."<<endl;
@@ -271,28 +269,63 @@ public:
 		}
 		cout<<endl;
 	}
+
 	void show_node_num()
 	{
 		cout<<"Num of node: "<<this->count_node<<endl;
 	}
 
+
+	void get_head_node_addr();
+	void get_tail_node_addr();
+	void show_list_addr();
+	void show_top();
 };
 
+void LinkedList::get_head_node_addr()
+{
+    cout<<this->head<<endl;
+}
 
+void LinkedList::get_tail_node_addr()
+{
+    cout<<this->tail<<endl;
+}
+
+void LinkedList::show_list_addr()
+{
+        if(head == NULL && tail == NULL)
+		{
+			cout<<"warrning: No Node Created."<<endl;
+			return;
+		}
+		Node *c = head;
+		while(c)
+		{
+			cout<<c<<" ";
+			c = c->next;
+		}
+		cout<<endl;
+}
+
+void LinkedList::show_top()
+{
+    cout<<tail->data<<endl;
+}
 int main()
 {
 	LinkedList l;
-	while(1)
+	int n; cin>>n;
+	while(n--)
 	{
 		int t; cin>>t;
-		l.add_node_sorted(t);
-		l.show_list();
+		l.add_node(t);
 	}
+    l.show_top();
+    l.pop_node();
+    l.show_top();
+    l.pop_node();
 
-	l.pop_node();
-	l.show_list();
-	l.pop_node();
-	l.show_list();
 
 	return 0;
 }
