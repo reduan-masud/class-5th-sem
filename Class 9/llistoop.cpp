@@ -275,12 +275,59 @@ public:
 		cout<<"Num of node: "<<this->count_node<<endl;
 	}
 
-
+  void marge(Node *, int);
+  Node *begain();
+  void delete_node_by_value(int);
 	void get_head_node_addr();
 	void get_tail_node_addr();
 	void show_list_addr();
 	void show_top();
 };
+/*
+void marge(Node *sbegain, Node *send, int num)
+{
+    this->tail->next = sbegain;
+    this->tail = send;
+    this->count_node += num;
+}
+*/
+Node *LinkedList::begain()
+{
+    return this->head;
+}
+
+void LinkedList::delete_node_by_value(int value)
+{
+    Node *c = head;
+    Node *t;
+    bool deleted = false;
+    int count_n = 0;
+    if(c->data == value)
+    {
+        head = c->next;
+        free(c);
+        deleted = true;
+        count_node--;
+        return;
+    }
+    while(c)
+    {
+            if(c->next->data == value)
+            {
+                t = c->next;
+                if(t->next == NULL)
+                    tail = c;
+                c->next = t->next;
+                free(t);
+                deleted = true;
+                return;
+            }
+            c = c->next;
+    }
+
+    if(!deleted)
+        cout<<"warrning: there is no such value"<<endl;
+}
 
 void LinkedList::get_head_node_addr()
 {
@@ -323,7 +370,11 @@ int main()
 		int t; cin>>t;
 		l.add_node(t);
 	}
-
-
+    l.show_list();
+    l.add_node(2, 199);
+    l.show_list();
+    l.add_node(50);
+    l.show_list();
+    
 	return 0;
 }
