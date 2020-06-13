@@ -3,11 +3,14 @@
  ```cpp
  void add_node(int value){...}
  ```
- - this will creat a node and insert a value at the end of the list;
+ - this will creat a node and insert a value at the end of the list; example 
+ let list `l` has no node now execute `l.add_node(1);` the list is `[1]` again execute `l.add_node(5);` this list is `[1, 5]`
  ```cpp
  void add_node(int position ,int  value){...}
  ```
- - will insert a node with `int  value` on the given `int position`
+ - will insert a node with `int  value` on the given `int position`.
+ this is solved by method overloading we have to use same method we've used to add a node. we should pass another position before value. asume our list is same as before. now execute `l.add_node(2, 20);` now the list is `[1, 20, 5]`
+
  ```cpp
 void search_value(int d){...}
 ```
