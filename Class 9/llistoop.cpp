@@ -1,3 +1,12 @@
+/*
+
+    Author: Md. Reduan Masud
+    Project: Linked List Implementation OOP.
+    Project Link: https://github.com/reduan-masud/class-5th-sem/tree/master/Class%209
+    All Method Explained at Project Link.
+
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -201,6 +210,7 @@ class LinkedList{
             {
                 this->add_node(val);
                 return;
+
             }
 
             if(!is_sorted)
@@ -233,6 +243,7 @@ class LinkedList{
                 }
                 c = c->next;
             }
+            this->count_node++;
         }
 
         void pop_node()
@@ -274,7 +285,7 @@ class LinkedList{
         }
         void reverse();
         int count();
-        void marge(LinkedList *);
+        void merge(LinkedList *);
         Node *begain();
         Node *end();
         void delete_node_by_value(int);
@@ -305,7 +316,7 @@ int LinkedList::count()
 {
     return this->count_node;
 }
-void LinkedList::marge(LinkedList *list2)
+void LinkedList::merge(LinkedList *list2)
 {
     this->tail->next = list2->begain();
     this->tail = list2->end();
@@ -387,29 +398,108 @@ void LinkedList::show_top()
 int main()
 {
     LinkedList l;
+    cout<<"To stop programm any time press Ctrl+z"<<endl;
     cout<<"Enter the number of element you want to insert at list 1."<<endl;
     int n; cin>>n;
+    cout<<"Enter "<<n<<" values saperated with space sorted"<<endl;
     while(n--)
     {
-        cout<<"Enter the value: "<<endl;
         int t; cin>>t;
         l.add_node(t);
     }
+    l.show_list();
+
+    cout<<endl;
+    cout<<"============================="<<endl;
+    cout<<"1. Insert value sorted"<<endl;
+    cout<<"============================="<<endl;
+    cout<<endl;
+
+    int y = 1;
+    while(y)
+    {
+        cout<<"Do you want to Insert Value?: 1<=  Yes or 0  No: ";
+        cin>>y;
+        if(y == 0) break;
+        cout<<"Enter a value that you wanted to insert: "<<endl;
+        cin>>n;
+        l.add_node_sorted(n);
+        l.show_list();
+    }
+
+    cout<<endl;
+    cout<<"========================="<<endl;
+    cout<<"2. Insert Value Unsorted."<<endl;
+    cout<<"========================="<<endl;
+    cout<<endl;
+
+    y = 1;
+    while(y)
+    {
+        cout<<"Do you want to Insert Value: 1<= Yes or 0 No: ";
+        cin>>y;
+        if(y == 0) break;
+        cout<<"Enter a position and  value saperated by space:\n";
+        int pos;
+        cin>>pos;
+        cin>>n;
+        l.add_node(pos,n);
+        l.show_list();
+    }
+
+    cout<<endl;
+    cout<<"==========================================="<<endl;
+    cout<<"3. Delete a value from list by value"<<endl;
+    cout<<"==========================================="<<endl;
+    cout<<endl;
+
+    y = 1;
+    while(y)
+    {
+        cout<<"Do you want to Delete Value: 1<=  Yes or 0 No: ";
+        cin>>y;
+        if(y == 0) break;
+        cout<<"Enter the value you want to delete \n";
+        cin>>n;
+        l.delete_node_by_value(n);
+        l.show_list();
+    }
+
+    cout<<endl;
+    cout<<"========================"<<endl;
+    cout<<"4. Merge two list"<<endl;
+    cout<<"========================"<<endl;
+    cout<<endl;
+    
+    cout<<"creating a new list..."<<endl;
+    LinkedList l2;
+    cout<<"Number of node you want to add at list 2: ";
+    cin>>n;
+    cout<<"Enter "<<n<<" value saperated by space"<<endl;
+    while(n--)
+    {
+        int t; cin>>t;
+        l2.add_node(t);
+    }
+    l2.show_list();
+    cout<<"Merging list 2 ath list ... ... "<<endl;
+    l.merge(&l2);
+    cout<<"Printing all the value of list 1"<<endl;
+    l.show_list();
+    
+    cout<<"Enter any number  to continue..."<<endl;
+    cin>>n;
+    
+    cout<<endl;
+    cout<<"======================"<<endl;
+    cout<<"5. Reverse list"<<endl;
+    cout<<"======================"<<endl;
+    cout<<endl;
+    
+    cout<<"Reversing the list 1"<<endl;
     l.reverse();
-    /*
-       LinkedList l2;
+    l.show_list();
 
-       cout<<"Enter the number of element you want to insert at list 2."<<endl;
-       cin>>n;
-       while(n--)
-       {
-       cout<<"Enter the value: "<<endl;
-       int t; cin>>t;
-       l2.add_node(t);
-       }
 
-       l.marge(&l2);
-     */
-    l.show_list();	
     return 0;
 }
