@@ -1,4 +1,18 @@
 # --Linked List
+
+In this Linked List about all functionality included.
+To create a link list we have to creat an object of LinkedList class in the `main()` function
+Here is the example to initiate a LinkList.
+```cpp
+int main()
+{
+  LinkedList l;
+}
+
+```
+this will create empty list. to add some node or data we have to call `add_node(int)` method.
+
+
 ## method lists-
  ```cpp
  void add_node(int value){...}
