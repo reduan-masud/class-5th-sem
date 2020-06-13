@@ -272,28 +272,37 @@ public:
 
 	void show_node_num()
 	{
-		cout<<"Num of node: "<<this->count_node<<endl;
+    cout<<this->count_node<<endl;
 	}
-
-  void marge(Node *, int);
+  int count();
+  void marge(Node *,Node *,  int);
   Node *begain();
+  Node *end();
   void delete_node_by_value(int);
 	void get_head_node_addr();
 	void get_tail_node_addr();
 	void show_list_addr();
 	void show_top();
 };
-/*
-void marge(Node *sbegain, Node *send, int num)
+
+int LinkedList::count()
+{
+  return this->count_node;
+}
+void LinkedList::marge(Node *sbegain, Node *send, int num)
 {
     this->tail->next = sbegain;
     this->tail = send;
     this->count_node += num;
 }
-*/
 Node *LinkedList::begain()
 {
     return this->head;
+}
+
+Node *LinkedList::end()
+{
+  return this->tail;
 }
 
 void LinkedList::delete_node_by_value(int value)
@@ -362,7 +371,7 @@ void LinkedList::show_top()
 int main()
 {
 	LinkedList l;
-	cout<<"Enter the number of element you want to insert."<<endl;
+	cout<<"Enter the number of element you want to insert at list 1."<<endl;
 	int n; cin>>n;
 	while(n--)
 	{
@@ -370,11 +379,19 @@ int main()
 		int t; cin>>t;
 		l.add_node(t);
 	}
-    l.show_list();
-    l.add_node(2, 199);
-    l.show_list();
-    l.add_node(50);
-    l.show_list();
-    
-	return 0;
+  LinkedList l2;
+
+	cout<<"Enter the number of element you want to insert at list 2."<<endl;
+	 cin>>n;
+	while(n--)
+	{
+	    cout<<"Enter the value: "<<endl;
+		int t; cin>>t;
+		l2.add_node(t);
+	}
+  
+  l.marge(l2.begain(), l2.end(), l2.count());
+
+  l.show_list();	
+  return 0;
 }
