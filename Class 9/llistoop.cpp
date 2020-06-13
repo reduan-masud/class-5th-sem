@@ -197,44 +197,42 @@ public:
 
 	void add_node_sorted(int val)
 	{
-    if(count_node == 0)
-    {
-      this->add_node(val);
-      return;
-    }
+      if(count_node == 0)
+      {
+        this->add_node(val);
+        return;
+      }
 
-		if(!is_sorted)
-		{
-			cout<<"warrnint: the list must be in sorted order"<<endl;
-			return;
-		}
+		  if(!is_sorted)
+		  {
+			  cout<<"warrnint: the list must be in sorted order"<<endl;
+			  return;
+		  }
 
-		Node *m = new node;
-		m->data = val;
+		  Node *m = new node;
+		  m->data = val;
 
-		Node *c = head;
+		  Node *c = head;
 
-		while(c)
-		{
-			if(m->data < c->data)
-			{
-				m->next = c->next;
-				c->next = m;
-				swap(c->data, m->data);
-				this->count_node++;
-				break;
-			}
-			else if(c->next == NULL)
-            {
+		  while(c)
+		  {
+			  if(m->data < c->data)
+			  {
+				  m->next = c->next;
+				  c->next = m;
+				  swap(c->data, m->data);
+				  this->count_node++;
+				  break;
+			  }
+			  else if(c->next == NULL)
+        {
                 c->next = m;
                 m->next = NULL;
                 tail = m;
                 break;
-            }
-			c = c->next;
-		}
-
-
+        }
+			  c = c->next;
+		  }
 	}
 
 	void pop_node()
