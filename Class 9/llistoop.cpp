@@ -274,6 +274,7 @@ public:
 	{
     cout<<this->count_node<<endl;
 	}
+  void reverse();
   int count();
   void marge(LinkedList *);
   Node *begain();
@@ -284,7 +285,24 @@ public:
 	void show_list_addr();
 	void show_top();
 };
+void LinkedList::reverse()
+{
+  Node *p = head;
+  Node *q = head->next;;
+  Node *r;
+  p->next = NULL;
 
+  while(q!=NULL)
+  {
+    r = q;
+    q = q->next;
+    r->next = p;
+    p = r;
+  }
+  r = head;
+  head = tail;
+  tail = r;
+}
 int LinkedList::count()
 {
   return this->count_node;
@@ -379,6 +397,8 @@ int main()
 		int t; cin>>t;
 		l.add_node(t);
 	}
+  l.reverse();
+  /*
   LinkedList l2;
 
 	cout<<"Enter the number of element you want to insert at list 2."<<endl;
@@ -391,7 +411,7 @@ int main()
 	}
   
   l.marge(&l2);
-
+  */
   l.show_list();	
   return 0;
 }

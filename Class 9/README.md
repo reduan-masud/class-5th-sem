@@ -33,3 +33,9 @@ void delete_node_by_position(int p){...}
 void marge(LiknedList * list){...}
 ```
 - This method is to marge two list together like if I want to ad l2 to l1 then we will write l1.marge(&l2);
+```cpp
+void reverse(){...}
+```
+- This method is used to reverse a list. example such that a list `l`
+and the list have data `1, 2, 3, 4, 5` now just pass l.reverse();
+and the result will `5, 4, 3, 2, 1`
