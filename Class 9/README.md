@@ -37,5 +37,5 @@ void marge(LiknedList * list){...}
 void reverse(){...}
 ```
 - This method is used to reverse a list. example such that a list `l`
-and the list have data `1, 2, 3, 4, 5` now just pass l.reverse();
+and the list have data `1, 2, 3, 4, 5` now just pass `l.reverse();`
 and the result will `5, 4, 3, 2, 1`
