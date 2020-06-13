@@ -275,7 +275,7 @@ public:
     cout<<this->count_node<<endl;
 	}
   int count();
-  void marge(Node *,Node *,  int);
+  void marge(LinkedList *);
   Node *begain();
   Node *end();
   void delete_node_by_value(int);
@@ -289,11 +289,11 @@ int LinkedList::count()
 {
   return this->count_node;
 }
-void LinkedList::marge(Node *sbegain, Node *send, int num)
+void LinkedList::marge(LinkedList *list2)
 {
-    this->tail->next = sbegain;
-    this->tail = send;
-    this->count_node += num;
+    this->tail->next = list2->begain();
+    this->tail = list2->end();
+    this->count_node += list2->count();
 }
 Node *LinkedList::begain()
 {
@@ -390,7 +390,7 @@ int main()
 		l2.add_node(t);
 	}
   
-  l.marge(l2.begain(), l2.end(), l2.count());
+  l.marge(&l2);
 
   l.show_list();	
   return 0;
